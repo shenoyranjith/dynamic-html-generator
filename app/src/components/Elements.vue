@@ -14,7 +14,7 @@
           >
             <v-list-item v-for="(element, index) in elements" :key="index">
               <v-list-item-content>
-                <v-list-item-title>{{ element.name }}</v-list-item-title>
+                <v-list-item-title>{{ element.type }}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
           </draggable>
@@ -42,7 +42,7 @@
               <v-list-item-content>
                 <v-list-item-title>
                   <v-layout>
-                    <v-flex xs6> {{ element.name }} </v-flex>
+                    <v-flex xs6> {{ element.type }} </v-flex>
                     <v-spacer></v-spacer>
                     <v-flex xs1>
                       <v-dialog v-model="dialog" persistent max-width="290">
@@ -65,13 +65,17 @@
                                 </v-text-field>
                               </v-flex>
                               <v-flex xs12>
+                                <v-text-field label="Name" v-model="name">
+                                </v-text-field>
+                              </v-flex>
+                              <!-- <v-flex xs12>
                                 <v-text-field label="Color" v-model="color">
                                 </v-text-field>
                               </v-flex>
                               <v-flex xs12>
                                 <v-text-field label="Size" v-model="size">
                                 </v-text-field>
-                              </v-flex>
+                              </v-flex> -->
                             </v-layout>
                           </v-card-text>
                           <v-card-actions>
@@ -110,50 +114,56 @@ export default {
         {
           properties: {
             identifier: "",
-            color: "",
-            size: ""
+            name: ""
+            // color: "",
+            // size: ""
           },
-          name: "Text Field"
+          type: "Text Field"
         },
         {
           properties: {
             identifier: "",
-            color: "",
-            size: ""
+            name: ""
+            // color: "",
+            // size: ""
           },
-          name: "Submit Button"
+          type: "Submit Button"
         },
         {
           properties: {
             identifier: "",
-            color: "",
-            size: ""
+            name: ""
+            // color: "",
+            // size: ""
           },
-          name: "Radio Button"
+          type: "Radio Button"
         },
         {
           properties: {
             identifier: "",
-            color: "",
-            size: ""
+            name: ""
+            // color: "",
+            // size: ""
           },
-          name: "Check Box"
+          type: "Check Box"
         },
         {
           properties: {
             identifier: "",
-            color: "",
-            size: ""
+            name: ""
+            // color: "",
+            // size: ""
           },
-          name: "Text Area"
+          type: "Text Area"
         },
         {
           properties: {
             identifier: "",
-            color: "",
-            size: ""
+            name: ""
+            // color: "",
+            // size: ""
           },
-          name: "File Input"
+          type: "File Input"
         }
       ],
       selectedElements: [],
@@ -162,6 +172,14 @@ export default {
     };
   },
   computed: {
+    name: {
+      get() {
+        return this.elementEditied ? this.elementEditied.properties.name : "";
+      },
+      set(value) {
+        this.elementEditied.properties.name = value;
+      }
+    },
     identifier: {
       get() {
         return this.elementEditied
@@ -171,23 +189,23 @@ export default {
       set(value) {
         this.elementEditied.properties.identifier = value;
       }
-    },
-    color: {
-      get() {
-        return this.elementEditied ? this.elementEditied.properties.color : "";
-      },
-      set(value) {
-        this.elementEditied.properties.color = value;
-      }
-    },
-    size: {
-      get() {
-        return this.elementEditied ? this.elementEditied.properties.size : "";
-      },
-      set(value) {
-        this.elementEditied.properties.size = value;
-      }
     }
+    // color: {
+    //   get() {
+    //     return this.elementEditied ? this.elementEditied.properties.color : "";
+    //   },
+    //   set(value) {
+    //     this.elementEditied.properties.color = value;
+    //   }
+    // },
+    // size: {
+    //   get() {
+    //     return this.elementEditied ? this.elementEditied.properties.size : "";
+    //   },
+    //   set(value) {
+    //     this.elementEditied.properties.size = value;
+    //   }
+    // }
   },
   methods: {
     clone(element) {
@@ -197,7 +215,7 @@ export default {
       this.selectedElements.splice(index, 1);
     },
     submit() {
-      console.log(this.selectedElements);
+      this.$emit("submit", this.selectedElements);
     }
   },
   components: {

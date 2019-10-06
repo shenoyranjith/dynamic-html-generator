@@ -1,8 +1,9 @@
 <template>
   <v-layout justify-center row wrap px-4>
+    <v-flex xs12 pa-5>Drag elemnts from the form elements area to the selected element area to add them to the HTML.</v-flex>
     <v-flex xs5>
       <v-card tile>
-        <v-card-title>Form Elemnts</v-card-title>
+        <v-card-title>Form Elements</v-card-title>
         <v-divider></v-divider>
         <v-card-text style="min-height:300px">
           <draggable
@@ -26,7 +27,7 @@
     </v-flex>
     <v-flex xs5>
       <v-card tile>
-        <v-card-title>Selected Elemnts</v-card-title>
+        <v-card-title>Selected Elements</v-card-title>
         <v-divider></v-divider>
         <v-card-text style="min-height:300px">
           <draggable

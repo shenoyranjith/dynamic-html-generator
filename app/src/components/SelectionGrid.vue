@@ -60,7 +60,9 @@ export default {
         fileName: this.fileName,
         pageTitle: this.pageTitle
       });
-      this.filePath = response.data.filePath;
+      let path = response.data.filePath;
+      this.filePath = path;
+      this.fi
       this.dialog = false;
     }
   },

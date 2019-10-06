@@ -36,8 +36,8 @@
 import Vue from "vue";
 import Elements from "./Elements";
 
-// const baseUrl = "http://localhost:3000/";
-const baseUrl = "http://192.168.0.188:3000/";
+const baseUrl = "http://localhost:3000/";
+// const baseUrl = "http://192.168.0.188:3000/";
 
 export default {
   data() {
